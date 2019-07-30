@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "alwaysStrict": true,
+    "diagnostics": true,
+    "disableSizeLimit": true,
+    "esModuleInterop": true,
+    "extendedDiagnostics": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "listEmittedFiles": true,
+    "listFiles": true,
+    "module": "commonjs",
+    "pretty": true,
+    "target": "es2017"
+  }
+}
