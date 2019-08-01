@@ -39,6 +39,7 @@
     "cov": "open coverage/index.html",
     "lint": "tslint -p tsconfig.test.json",
     "format": "tslint --fix -p tsconfig.test.json",
+    "doc": "typedoc --out dist/docs --mode modules src/main",
     "make-distribution": "run-s transpile-main finalize-distribution",
     "finalize-distribution": "copyfiles --verbose package.json package-lock.json README.md dist",
     "prelink": "run-s make-distribution",
@@ -66,6 +67,7 @@
     "source-map-support": "0.5.12",
     "ts-node": "8.3.0",
     "tslint": "5.18.0",
+    "typedoc": "0.15.0",
     "typescript": "3.5.3"
   },
   "standard": {
