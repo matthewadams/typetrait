@@ -1,9 +1,11 @@
 import {expect} from "chai";
-import {I as IPerson, Person} from "../../main/Person";
+import {IPerson, Person} from "../../main/Person";
 
 describe("Person", () => {
   it("should work", () => {
-    const p: IPerson = new Person().withName("foobar");
+    const id = "id";
+    const p: IPerson = new Person().withId(id).withName("John Smith");
+    expect(p.id).to.equal("id");
     expect(p.name).to.equal("foobar");
   });
 });

@@ -68,15 +68,15 @@ export type anyn = any | null;
 export type anyun = anyu | anyn;
 
 /**
- * `array<T> | undefined`
+ * `array<ID> | undefined`
  */
 export type arrayu<T> = T[] | undefined;
 /**
- * `array<T> | null`
+ * `array<ID> | null`
  */
 export type arrayn<T> = T[] | null;
 /**
- * `array<T> | undefined | null`
+ * `array<ID> | undefined | null`
  */
 export type arrayun<T> = arrayu<T> | arrayn<T>;
 
@@ -91,12 +91,12 @@ export type undefinedn = undefined | null;
 export type nullu = undefinedn;
 
 /**
- * A constructor.
- */
-export type ctor<T = {}> = new (...args: any[]) => T;
-
-/**
  * The empty class.
  */
 export class Empty {
 }
+
+/**
+ * A constructor.
+ */
+export type ctor<T = Empty> = new(...args: any[]) => T;

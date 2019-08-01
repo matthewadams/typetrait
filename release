@@ -90,7 +90,7 @@ fi
 TECHNOLOGIES="$(echo "$1" | tr '+' ' ')"
 
 # Source technology-specific file(s) for usage_xxx, getVersion_xxx & setVersion_xxx functions
-for T in $TECHNOLOGIES; do
+for ID in $TECHNOLOGIES; do
   FUNCTIONS_FILE="$THIS_ABSPATH/release-$T"
   if [ -f "$FUNCTIONS_FILE" ]; then
     source "$FUNCTIONS_FILE"
@@ -103,13 +103,13 @@ done
 
 # usage: setVersions version
 setVersions() {
-  for T in $TECHNOLOGIES; do
+  for ID in $TECHNOLOGIES; do
     setVersion_$T $1
   done
 }
 
 usages() {
-  for T in $TECHNOLOGIES; do
+  for ID in $TECHNOLOGIES; do
     usage_$T
   done
 }
@@ -138,7 +138,7 @@ echo "INFO: checking required preconditions"
 git pull
 
 # check that all versions are exactly the same
-for T in $TECHNOLOGIES; do
+for ID in $TECHNOLOGIES; do
   V="$(getVersion_$T)"
   if [ -n "$V_LAST" ] && [ "$V_LAST" != "$V" ]; then
     echo "ERROR: versions among different technology files differ: $T is at $V, but $T_LAST is at $V_LAST" >&2

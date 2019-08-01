@@ -1,9 +1,12 @@
+/**
+ * The Nameable trait.
+ */
 import {ctor, Empty, stringu} from "./Types";
 
 /**
  * The Nameable interface.
  */
-export interface I {
+export interface INameable {
   name?: string;
 
   /**
@@ -12,17 +15,18 @@ export interface I {
    * @param name
    * @return this
    */
-  withName(name?: string): this;
+  withName(name: stringu): this;
 }
 
 /**
  * Nameable trait.
  *
  * @param superclass The superclass that this trait subclass will extend, else [[Empty]].
- * @typeparam T Type of the superclass.
+ * @typeparam ID Type of the superclass.
  */
-export function Nameable<T extends ctor>(superclass: T = Empty as T) {
-  return class extends superclass implements I {
+export function Nameable<T extends ctor = ctor<Empty>>(superclass: T = Empty as T) {
+  return class extends superclass implements INameable {
+    protected _name: stringu;
 
     /**
      * Name accessor.
@@ -35,18 +39,16 @@ export function Nameable<T extends ctor>(superclass: T = Empty as T) {
       this._doSetName(this._testSetName(name));
     }
 
-    protected _name: stringu;
-
-    public withName(name?: string): this {
+    public withName(name: stringu): this {
       this.name = name;
       return this;
     }
 
-    protected _testSetName(name?: string): stringu {
+    protected _testSetName(name: stringu): stringu {
       return name;
     }
 
-    protected _doSetName(name?: string): this {
+    protected _doSetName(name: stringu): this {
       this._name = name;
       return this;
     }
