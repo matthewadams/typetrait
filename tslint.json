@@ -19,7 +19,10 @@
       ]
     },
     "no-empty-interface": false,
-    "member-access": true
+    "member-access": true,
+    "interface-name": [
+      false
+    ]
   },
   "rulesDirectory": []
 }

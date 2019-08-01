@@ -1,27 +1,48 @@
-import Constructor from "./Constructor";
-import Empty from "./Empty";
-import INameable from "./INameable";
+import {ctor, Empty, stringu} from "./Types";
 
-type su = string | undefined;
+/**
+ * The Nameable interface.
+ */
+export interface I {
+  name?: string;
 
-export default function Nameable<T extends Constructor>(superclass: T = Empty as T) {
-  return class extends superclass implements INameable {
-    protected _name?: string;
+  /**
+   * Name mutator as builder pattern.
+   *
+   * @param name
+   * @return this
+   */
+  withName(name?: string): this;
+}
 
-    public get name(): su {
+/**
+ * Nameable trait.
+ *
+ * @param superclass The superclass that this trait subclass will extend, else [[Empty]].
+ * @typeparam T Type of the superclass.
+ */
+export function Nameable<T extends ctor>(superclass: T = Empty as T) {
+  return class extends superclass implements I {
+
+    /**
+     * Name accessor.
+     */
+    public get name(): stringu {
       return this._name;
     }
+
+    public set name(name: stringu) {
+      this._doSetName(this._testSetName(name));
+    }
+
+    protected _name: stringu;
 
     public withName(name?: string): this {
       this.name = name;
       return this;
     }
 
-    public set name(name: su) {
-      this._doSetName(this._testSetName(name));
-    }
-
-    protected _testSetName(name?: string): su {
+    protected _testSetName(name?: string): stringu {
       return name;
     }
 
