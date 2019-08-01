@@ -1,13 +1,9 @@
-// eslint-disable-next-line no-unused-vars
-import Person from './Person'
-import { NameableTrait } from './NameableTrait'
+import IPerson from "./IPerson";
+import Nameable from "./Nameable";
 
-export default class PersonImpl extends NameableTrait implements Person {
-    private created: Date;
-
-    public constructor (name?: string, created: Date = new Date()) {
-      super()
-      this.name = name
-      this.created = new Date(created.getTime())
-    }
+export default class PersonImpl extends Nameable() implements IPerson {
+  constructor(name?: string) {
+    super();
+    this.name = name;
+  }
 }
