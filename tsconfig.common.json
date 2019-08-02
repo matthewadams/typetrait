@@ -10,8 +10,5 @@
     "module": "commonjs",
     "pretty": true,
     "target": "es2017"
-  },
-  "exclude": [
-    "./src/main/Person.ts"
-  ]
+  }
 }
