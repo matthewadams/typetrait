@@ -1,6 +1,6 @@
-import {INameable, Nameable} from "./Nameable";
-import {IStringIdentifiable, StringIdentifiable} from "./StringIdentifiable";
-import {stringu} from "./Types";
+import {INameable, Nameable} from "../../main/Nameable";
+import {IStringIdentifiable, StringIdentifiable} from "../../main/StringIdentifiable";
+import {stringu} from "../../main/Types";
 
 export interface IStringIdentifiablePerson extends IStringIdentifiable, INameable {
 }

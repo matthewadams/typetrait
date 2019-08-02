@@ -29,9 +29,7 @@ export interface IIdentifiable<ID> {
  * @param superclass The superclass that this trait subclass will extend, else [[Empty]].
  * @typeparam ID Type of the superclass.
  */
-export function Identifiable<ID, T extends ctor = ctor<Empty>>(superclass: T = Empty as T)
-// TODO: add return type (T & IIdentifiable)?
-{
+export function Identifiable<ID, T extends ctor = ctor<Empty>>(superclass: T = Empty as T) {
   return class extends superclass implements IIdentifiable<ID> {
     protected _id?: ID;
 
@@ -42,7 +40,7 @@ export function Identifiable<ID, T extends ctor = ctor<Empty>>(superclass: T = E
       return this._id;
     }
 
-    public set id(id: ID| undefined) {
+    public set id(id: ID | undefined) {
       this._doSetId(this._testSetId(id));
     }
 

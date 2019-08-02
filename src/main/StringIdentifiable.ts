@@ -29,9 +29,7 @@ export interface IStringIdentifiable {
  * @param superclass The superclass that this trait subclass will extend, else [[Empty]].
  * @typeparam ID Type of the superclass.
  */
-export function StringIdentifiable<T extends ctor = ctor<Empty>>(superclass: T = Empty as T)
-// TODO: add return type (T & StringIdentifiable)?
-{
+export function StringIdentifiable<T extends ctor = ctor<Empty>>(superclass: T = Empty as T) {
   return class extends superclass implements IStringIdentifiable {
     protected _id?: string;
 

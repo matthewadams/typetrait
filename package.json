@@ -39,7 +39,7 @@
     "cov": "open coverage/index.html",
     "lint": "tslint -p tsconfig.test.json",
     "format": "tslint --fix -p tsconfig.test.json",
-    "doc": "typedoc --out dist/docs --mode modules src/main",
+    "doc": "typedoc --out dist/docs --mode modules --tsconfig tsconfig.main.json src/main",
     "make-distribution": "run-s transpile-main finalize-distribution",
     "finalize-distribution": "copyfiles --verbose package.json package-lock.json README.md dist",
     "prelink": "run-s make-distribution",
@@ -56,6 +56,7 @@
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "0.1.3",
     "@types/chai": "4.1.7",
+    "@types/dirty-chai": "2.0.0",
     "@types/mocha": "5.2.7",
     "acorn": "6.2.1",
     "chai": "4.2.0",

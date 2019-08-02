@@ -24,9 +24,7 @@ export interface INameable {
  * @param superclass The superclass that this trait subclass will extend, else [[Empty]].
  * @typeparam ID Type of the superclass.
  */
-export function Nameable<T extends ctor = ctor<Empty>>(superclass: T = Empty as T)
-// TODO: add return type (T & INameable)?
-{
+export function Nameable<T extends ctor = ctor<Empty>>(superclass: T = Empty as T) {
   return class extends superclass implements INameable {
     protected _name: stringu;
 

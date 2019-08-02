@@ -1,14 +1,15 @@
 import {expect, use} from "chai";
 import dirtyChai from "dirty-chai";
-import {Person} from "./Person";
 
 use(dirtyChai);
+
+import {IStringIdentifiablePerson, StringIdentifiablePerson} from "./StringIdentifiablePerson";
 
 describe("Person", () => {
   it("should work with a string id", () => {
     const id = "id";
     const name = "John Smith";
-    const p: Person = new Person(name).withId(id);
+    const p = new StringIdentifiablePerson(name).withId(id);
 
     expect(p.id).to.equal(id);
     p.unsetId();
@@ -16,7 +17,7 @@ describe("Person", () => {
     expect(p.name).to.equal(name);
 
     // confirm overriding
-    expect(() => new Person("invalidname")).to.throw();
-    expect(() => new Person(name).withId("invalid id")).to.throw();
+    expect(() => new StringIdentifiablePerson("invalidname")).to.throw();
+    expect(() => new StringIdentifiablePerson(name).withId("invalid id")).to.throw();
   });
 });

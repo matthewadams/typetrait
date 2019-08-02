@@ -91,7 +91,7 @@ export type undefinedn = undefined | null;
 export type nullu = undefinedn;
 
 /**
- * The empty class.
+ * The empty class. Literally `class Empty {}`.
  */
 export class Empty {
 }

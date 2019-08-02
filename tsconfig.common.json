@@ -10,5 +10,8 @@
     "module": "commonjs",
     "pretty": true,
     "target": "es2017"
-  }
+  },
+  "exclude": [
+    "./excluded/**/*.ts"
+  ]
 }
