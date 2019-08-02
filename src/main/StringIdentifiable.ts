@@ -1,13 +1,13 @@
 /**
- * The Identifiable trait.
+ * The StringIdentifiable trait.
  */
 import {ctor, Empty} from "./Types";
 
 /**
- * The Identifiable interface.
+ * The StringIdentifiable interface.
  */
-export interface IIdentifiable<ID> {
-  id: ID | undefined;
+export interface IStringIdentifiable {
+  id: string | undefined;
 
   /**
    * Id mutator as builder pattern.
@@ -15,7 +15,7 @@ export interface IIdentifiable<ID> {
    * @param name
    * @return this
    */
-  withId(id: ID): this;
+  withId(id: string): this;
 
   /**
    * Deletes the `id` property from this object.
@@ -24,29 +24,29 @@ export interface IIdentifiable<ID> {
 }
 
 /**
- * Identifiable trait.
+ * StringIdentifiable trait.
  *
  * @param superclass The superclass that this trait subclass will extend, else [[Empty]].
  * @typeparam ID Type of the superclass.
  */
-export function Identifiable<ID, T extends ctor = ctor<Empty>>(superclass: T = Empty as T)
-// TODO: add return type (T & IIdentifiable)?
+export function StringIdentifiable<T extends ctor = ctor<Empty>>(superclass: T = Empty as T)
+// TODO: add return type (T & StringIdentifiable)?
 {
-  return class extends superclass implements IIdentifiable<ID> {
-    protected _id?: ID;
+  return class extends superclass implements IStringIdentifiable {
+    protected _id?: string;
 
     /**
      * Id accessor.
      */
-    public get id(): ID | undefined {
+    public get id(): string | undefined {
       return this._id;
     }
 
-    public set id(id: ID| undefined) {
+    public set id(id: string | undefined) {
       this._doSetId(this._testSetId(id));
     }
 
-    public withId(id: ID): this {
+    public withId(id: string): this {
       this.id = id;
       return this;
     }
@@ -56,11 +56,11 @@ export function Identifiable<ID, T extends ctor = ctor<Empty>>(superclass: T = E
       return this;
     }
 
-    protected _testSetId(id: ID | undefined): ID | undefined {
+    protected _testSetId(id: string | undefined): string | undefined {
       return id;
     }
 
-    protected _doSetId(id: ID | undefined): this {
+    protected _doSetId(id: string | undefined): this {
       this._id = id;
       return this;
     }

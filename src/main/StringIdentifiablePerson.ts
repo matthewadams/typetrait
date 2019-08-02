@@ -1,11 +1,11 @@
-import {Identifiable, IIdentifiable} from "./Identifiable";
 import {INameable, Nameable} from "./Nameable";
+import {IStringIdentifiable, StringIdentifiable} from "./StringIdentifiable";
 import {stringu} from "./Types";
 
-export interface IPerson extends IIdentifiable<string>, INameable {
+export interface IStringIdentifiablePerson extends IStringIdentifiable, INameable {
 }
 
-export class Person extends Identifiable<string>(Nameable()) implements IPerson {
+export class StringIdentifiablePerson extends StringIdentifiable(Nameable()) implements IStringIdentifiablePerson {
 
   public static readonly ID_RX = /^\w+$/;
   public static readonly NAME_RX = /^[A-Za-z]+\s+[A-Za-z]+$/;
@@ -16,15 +16,15 @@ export class Person extends Identifiable<string>(Nameable()) implements IPerson 
     this._id = "none";
   }
 
-  protected _testSetId(id: string): string {
-    if (!id.match(Person.ID_RX)) {
+  protected _testSetId(id: stringu): stringu {
+    if (!(id && id.match(StringIdentifiablePerson.ID_RX))) {
       throw new Error("bad id");
     }
     return super._testSetId(id);
   }
 
   protected _testSetName(name: stringu): stringu {
-    if (!(name || name.match(Person.NAME_RX))) {
+    if (!(name && name.match(StringIdentifiablePerson.NAME_RX))) {
       throw new Error("bad name");
     }
     return super._testSetName(name);
