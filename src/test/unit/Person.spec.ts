@@ -38,8 +38,9 @@ describe("Person", () => {
   it("should work with a string id", () => {
     const id = "id";
     const name = "John Smith";
-    const p: Person = new Person(name);
+    const p = new Person(name);
 
+    expect(p instanceof Person).to.be.true();
     expect(p.id).to.equal("none");
 
     p.id = id;
@@ -48,7 +49,7 @@ describe("Person", () => {
     expect(p.id).not.to.be.ok();
     expect(p.name).to.equal(name);
 
-    // confirm overriding
+    // confirm method overriding
     expect(() => new Person("invalidname")).to.throw();
     expect(() => new Person(name).withId("invalid id")).to.throw();
   });
