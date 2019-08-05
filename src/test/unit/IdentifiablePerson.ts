@@ -5,7 +5,7 @@ import {stringu} from "../../main/Types";
 export interface IIdentifiablePerson extends IIdentifiable<string> {
 }
 
-export class IdentifiablePerson extends Identifiable<string>() implements IIdentifiablePerson {
+export class IdentifiablePerson extends Identifiable("none") implements IIdentifiablePerson {
 
   public static readonly ID_RX = /^\w+$/;
 

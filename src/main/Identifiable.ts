@@ -29,9 +29,9 @@ export interface IIdentifiable<ID> {
  * @param superclass The superclass that this trait subclass will extend, else [[Empty]].
  * @typeparam ID Type of the superclass.
  */
-export function Identifiable<ID, T extends ctor = ctor<Empty>>(superclass: T = Empty as T) {
+export function Identifiable<ID, T extends ctor>(defaultId: ID, superclass: T = Empty as T) {
   return class extends superclass implements IIdentifiable<ID> {
-    protected _id?: ID;
+    protected _id?: ID = defaultId;
 
     /**
      * Id accessor.

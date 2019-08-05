@@ -4,7 +4,7 @@ import {IdentifiablePerson} from "./IdentifiablePerson";
 
 use(dirtyChai);
 
-describe("Person2", () => {
+describe("IdentifiablePerson", () => {
   it("should work with a string id", () => {
     const id = "id";
     const p = new IdentifiablePerson().withId(id);

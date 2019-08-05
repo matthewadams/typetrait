@@ -5,7 +5,7 @@ import {stringu} from "../../main/Types";
 export interface IPerson extends IIdentifiable<string>, INameable {
 }
 
-export class Person extends Identifiable<string>(Nameable()) implements IPerson {
+export class Person extends Identifiable( "none", Nameable()) implements IPerson {
 
   public static readonly ID_RX = /^\w+$/;
   public static readonly NAME_RX = /^[A-Za-z]+\s+[A-Za-z]+$/;
@@ -13,7 +13,6 @@ export class Person extends Identifiable<string>(Nameable()) implements IPerson 
   constructor(name?: string) {
     super();
     this.name = name;
-    this._id = "none";
   }
 
   protected _testSetId(id: stringu): stringu {

@@ -8,8 +8,11 @@ describe("Person", () => {
   it("should work with a string id", () => {
     const id = "id";
     const name = "John Smith";
-    const p: Person = new Person(name).withId(id);
+    const p: Person = new Person(name);
 
+    expect(p.id).to.equal("none");
+
+    p.id = id;
     expect(p.id).to.equal(id);
     p.unsetId();
     expect(p.id).not.to.be.ok();
