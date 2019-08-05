@@ -5,7 +5,7 @@ type ctor<T = Empty> = new(...args: any[]) => T;
 
 function Nameable<T extends ctor = ctor<Empty>>(superclass: T = Empty as T) {
   return class extends superclass {
-    public name: string | undefined;
+    public name?: string;
   };
 }
 
