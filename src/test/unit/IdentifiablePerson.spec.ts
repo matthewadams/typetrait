@@ -1,8 +1,29 @@
 import {expect, use} from "chai";
 import dirtyChai from "dirty-chai";
-import {IdentifiablePerson} from "./IdentifiablePerson";
+import {Identifiable, IIdentifiable} from "../../main/Identifiable";
+import {stringu} from "../../main/Types";
 
 use(dirtyChai);
+
+interface IIdentifiablePerson extends IIdentifiable<string> {
+}
+
+class IdentifiablePerson extends Identifiable("none") implements IIdentifiablePerson {
+
+  public static readonly ID_RX = /^\w+$/;
+
+  constructor() {
+    super();
+    this._id = "none";
+  }
+
+  protected _testSetId(id: stringu): stringu {
+    if (!(id && id.match(IdentifiablePerson.ID_RX))) {
+      throw new Error("bad id");
+    }
+    return super._testSetId(id);
+  }
+}
 
 describe("IdentifiablePerson", () => {
   it("should work with a string id", () => {
