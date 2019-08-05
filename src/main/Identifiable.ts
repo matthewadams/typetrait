@@ -7,7 +7,7 @@ import {ctor, Empty} from "./Types";
  * The Identifiable interface.
  */
 export interface IIdentifiable<ID> {
-  id: ID | undefined;
+  id?: ID;
 
   /**
    * Id mutator as builder pattern.
@@ -26,6 +26,8 @@ export interface IIdentifiable<ID> {
 /**
  * Identifiable trait.
  *
+ * @param defaultId A default id value.
+ * Required for type inference reasons; see https://github.com/Microsoft/TypeScript/issues/26242.
  * @param superclass The superclass that this trait subclass will extend, else [[Empty]].
  * @typeparam ID Type of the superclass.
  */
