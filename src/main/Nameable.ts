@@ -26,7 +26,8 @@ export interface INameable {
  */
 export function Nameable<T extends ctor = ctor<Empty>>(superclass: T = Empty as T) {
   return class extends superclass implements INameable {
-    protected _name: stringu;
+    /* protected -- see https://github.com/Microsoft/TypeScript/issues/17293 */
+    public _name: stringu;
 
     /**
      * Name accessor.
@@ -44,11 +45,13 @@ export function Nameable<T extends ctor = ctor<Empty>>(superclass: T = Empty as 
       return this;
     }
 
-    protected _testSetName(name: stringu): stringu {
+    /* protected -- see https://github.com/Microsoft/TypeScript/issues/17293 */
+    public _testSetName(name: stringu): stringu {
       return name;
     }
 
-    protected _doSetName(name: stringu): this {
+    /* protected -- see https://github.com/Microsoft/TypeScript/issues/17293 */
+    public _doSetName(name: stringu): this {
       this._name = name;
       return this;
     }

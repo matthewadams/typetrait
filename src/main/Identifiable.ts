@@ -33,7 +33,8 @@ export interface IIdentifiable<ID> {
  */
 export function Identifiable<ID, T extends ctor>(defaultId: ID, superclass: T = Empty as T) {
   return class extends superclass implements IIdentifiable<ID> {
-    protected _id?: ID = defaultId;
+    /* protected -- see https://github.com/Microsoft/TypeScript/issues/17293 */
+    public _id?: ID = defaultId;
 
     /**
      * Id accessor.
@@ -56,11 +57,13 @@ export function Identifiable<ID, T extends ctor>(defaultId: ID, superclass: T = 
       return this;
     }
 
-    protected _testSetId(id: ID | undefined): ID | undefined {
+    /* protected -- see https://github.com/Microsoft/TypeScript/issues/17293 */
+    public _testSetId(id: ID | undefined): ID | undefined {
       return id;
     }
 
-    protected _doSetId(id: ID | undefined): this {
+    /* protected -- see https://github.com/Microsoft/TypeScript/issues/17293 */
+    public _doSetId(id: ID | undefined): this {
       this._id = id;
       return this;
     }

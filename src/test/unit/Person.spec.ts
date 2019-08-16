@@ -19,14 +19,16 @@ class Person extends Identifiable("none", Nameable()) implements IPerson {
     this.name = name;
   }
 
-  protected _testSetId(id: stringu): stringu {
+  /* protected */
+  public _testSetId(id: stringu): stringu {
     if (!(id && id.match(Person.ID_RX))) {
       throw new Error("bad id");
     }
     return super._testSetId(id);
   }
 
-  protected _testSetName(name: stringu): stringu {
+  /* protected */
+  public _testSetName(name: stringu): stringu {
     if (!(name && name.match(Person.NAME_RX))) {
       throw new Error("bad name");
     }

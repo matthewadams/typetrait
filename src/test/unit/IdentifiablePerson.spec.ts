@@ -17,7 +17,8 @@ class IdentifiablePerson extends Identifiable("none") implements IIdentifiablePe
     this._id = "none";
   }
 
-  protected _testSetId(id: stringu): stringu {
+  /* protected */
+  public _testSetId(id: stringu): stringu {
     if (!(id && id.match(IdentifiablePerson.ID_RX))) {
       throw new Error("bad id");
     }
