@@ -58,7 +58,7 @@
     "@types/chai": "4.1.7",
     "@types/dirty-chai": "2.0.0",
     "@types/mocha": "5.2.7",
-    "acorn": "6.2.1",
+    "acorn": "6.4.1",
     "chai": "4.2.0",
     "copyfiles": "2.1.1",
     "dirty-chai": "2.0.1",
